@@ -44,7 +44,7 @@ Optional, (i use it)
 
 
 # to do :
-# (that i failed due to the lack of knowledge)
+- (i failed this due to the lack of knowledge)
 
 - if anyone got the idea please update the code
 
