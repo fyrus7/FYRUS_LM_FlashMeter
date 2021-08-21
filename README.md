@@ -41,3 +41,19 @@ Optional, (i use it)
 9. Usb/Type-C charger for Lipo battery.
 
 10. Electronic enclosure case.
+
+
+# to do :
+# (that i failed due to the lack of knowledge)
+
+- if anyone got the idea please update the code
+
+- one tactile & one rotary switch with push button.
+
+1. Instead of 6 button, make one button for metering.
+2. add a rotary switch with push button to control,
+- plus.
+- minus.
+- single click to switch between aperture/shutter priority.
+- double click to enter iso setting.
+- long press to switch between ambient/flash mode.
