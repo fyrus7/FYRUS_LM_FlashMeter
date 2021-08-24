@@ -22,13 +22,15 @@ Incident Light Meter &amp; White Balance for Photography
 1. Arduino Nano.
 
 2. 0.96" Oled Display.
+- 7 pin or 4 pin both can use, i have write both the code. You just need to choose which to use.
+- 7 pin is faster but use more pin to soldered.
 
 3. BH1750FVI Light Sensor with Dome.
- - ( Minor change in code if you use BH1750 without dome)
+ - (minor change in code if you use BH1750 without dome)
 
 4. TCS34725 RGB Sensor.
 
-5. Tactile Button.
+5. 6x Tactile Button.
 
 6. AAA Battery case (for 2 battery).
 
@@ -57,3 +59,6 @@ Optional, (i use it)
 - single click to switch between aperture/shutter priority.
 - double click to enter iso setting.
 - long press to switch between ambient/flash mode.
+
+3. Battery meter not working
+- show always full LoL.
