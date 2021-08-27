@@ -1,4 +1,4 @@
-# FYRUS LM
+# FYRUS LM / Arduino Photography Light Meter
 Incident Light Meter &amp; White Balance for Photography
 
 
@@ -7,9 +7,10 @@ Incident Light Meter &amp; White Balance for Photography
 1. Aperture Priority.
 2. Shutter Priority.
 3. Flash Mode.
-4. Temperature Reading (White Balance).
-5. EV Reading.
-6. Battery Reading.
+4. ND Filter Mode.
+5. Temperature Reading (White Balance).
+6. EV Reading.
+7. Battery Reading.
 
 - Aperture: f/1.0 to f/22.0
 - Shutter: 1/10000 to 133 sec.
@@ -32,33 +33,28 @@ Incident Light Meter &amp; White Balance for Photography
 
 5. 6x Tactile Button.
 
-6. AAA Battery case (for 2 battery).
+6. Lipo 1S 3.7v Battery.
 
-Optional, (i use it)
-
-7. 3.7v Lipo Battery.
-
-8. 5v Step-Up converter (to convert 3.7v to 5v).
-
-9. Usb/Type-C charger for Lipo battery.
-
-10. Electronic enclosure case.
+7. Electronic enclosure case.
 
 
 # to do :
 - (i failed this due to the lack of knowledge)
-
 - if anyone got the idea please update the code
 
 - one tactile & one rotary switch with push button.
 
-1. Instead of 6 button, make one button for metering.
-2. add a rotary switch with push button to control,
+1. Instead of 6 button, make...
+- ONE Tactile Button for Metering
+- ONE (EC11) Rotary Switch with Push Button
+
+2. Rotary Switch to control...
 - plus.
 - minus.
 - single click to switch between aperture/shutter priority.
-- double click to enter iso setting.
-- long press to switch between ambient/flash mode.
+- double click to enter ISO/ND setting.
+- long press to switch between Ambient/Flash mode.
+- 
 
-3. Battery meter not working
-- show always full LoL.
+
+this Software is originally based from https://github.com/vpominchuk/lightmeter
