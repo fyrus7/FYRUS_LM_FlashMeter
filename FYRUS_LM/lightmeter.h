@@ -463,7 +463,7 @@ void refresh() {
     } else if (perc = 3.7) {
        display.drawBitmap(89, 39, battery_low, 16, 8, WHITE);
         display.print(F("20"));
-    } else if (perc = 3.6) {
+    } else {
        display.drawBitmap(89, 39, battery_empty, 16, 8, WHITE);
         display.print(F("00"));
     }
@@ -481,21 +481,21 @@ void refresh() {
 
 
 /* WHITE BALANCE DISPLAY (in Kelvin - TCS34725) /////// */
-   display.drawRect(86, 1, 42, 23, WHITE);
-   display.setCursor(96, 4);
+   display.drawRect(90, 1, 38, 25, WHITE);
+   display.setCursor(98, 5);
    display.print(F("TEMP"));
 
   if (rgb_sensor.ct > 9999) {
-    display.setCursor(99, 14);
+    display.setCursor(101, 15);
     display.print(rgb_sensor.ct / 1000.0, 0);
  } else {
-    display.setCursor(93, 14);
-    display.print(rgb_sensor.ct);
-  } display.print(F("K"));
+    display.setCursor(98, 15);
+    display.print(rgb_sensor.ct / 1000.0, 1);
+ }  display.print(F("K"));
 
 
 /*  LINE DIVISOR  /////// */
-   display.drawLine(86, 27, 86, 64, WHITE);
+   display.drawLine(86, 2, 86, 63, WHITE);
 /*
 // LUX PRINT
   display.setCursor(92, 1);
@@ -505,7 +505,7 @@ void refresh() {
 
 
 /* EV DISPLAY /////// */
-  display.setCursor(90, 28);
+  display.setCursor(90, 29);
   display.print(F("EV:"));
   if (lux > 0) {
     display.println(EV, 0);
