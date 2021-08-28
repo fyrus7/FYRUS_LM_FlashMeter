@@ -35,7 +35,7 @@ Incident Light Meter &amp; White Balance for Photography
 
 6. Lipo 1S 3.7v Battery.
 
-7. Electronic enclosure case.
+7. (optional) Electronic enclosure case.
 
 
 # to do :
