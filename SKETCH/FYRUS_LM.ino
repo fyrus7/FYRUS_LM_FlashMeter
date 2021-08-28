@@ -950,8 +950,9 @@ void showNDMenu() {
   delay(200);
 }
 
+/* /////// END OF DISPLAY INTERFACE /////// */
 
-/* NAVIGATION MENU /////// */
+/* /////// DISPLAY FUNCTION /////// */
 void menu() {
   if (MenuButtonState == 0) {
     if (mainScreen) {
