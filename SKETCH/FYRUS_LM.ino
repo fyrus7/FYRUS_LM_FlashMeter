@@ -121,8 +121,8 @@ static const unsigned char PROGMEM battery_empty [] =
 { 0x7F, 0xE0, 0x40, 0x20, 0x40, 0x38, 0x40, 0x38, 0x40, 0x38, 0x40, 0x38, 0x40, 0x20, 0x7F, 0xE0 };
 
 
-float   lux;
-float   ct;
+float   lux;                            // Lux value from BH1750
+float   ct;                             // Color Temp value from TCS34725
 boolean Overflow = 0;                   // Sensor got Saturated and Display "Overflow"
 float   ISOND;
 boolean ISOmode = 0;
@@ -159,7 +159,7 @@ uint8_t modeIndex =         EEPROM.read(modeIndexAddr);
 uint8_t meteringMode =      EEPROM.read(meteringModeAddr);
 uint8_t ndIndex =           EEPROM.read(ndIndexAddr);
 
-int value = 0;
+int value = 0;              // Battery Metering
 float voltage;
 float perc;
 
@@ -779,65 +779,67 @@ void refresh() {
     display.drawLine(44, 26, 50, 32, WHITE);
 
   }
-
-
-/* BATTERY PERCENTAGE /////// */
-    display.setCursor(104, 39);
-     if (perc > 4.2) {
-       display.drawBitmap(89, 39, battery_full, 16, 8, WHITE);
-        display.print(F("100"));
-    } else if (perc > 4.0) {
-       display.drawBitmap(89, 39, battery_threequarters, 16, 8, WHITE);
-        display.print(F("80"));
-    } else if (perc > 3.9) {
-       display.drawBitmap(89, 39, battery_half, 16, 8, WHITE);
-        display.print(F("60"));
-    } else if (perc > 3.7) {
-       display.drawBitmap(89, 39, battery_low, 16, 8, WHITE);
-        display.print(F("20"));
-    } else if (perc > 3.6) {
-       display.drawBitmap(89, 39, battery_empty, 16, 8, WHITE);
-        display.print(F("00"));
-    }
-       display.println(F("%"));
     
 
 /* METERING MODE DISPLAY (SWITCHING AMBIENT/FLASH) /////// */
   if (meteringMode == 0) {
 /* (F("AMBIENT")); */ 
   } else if (meteringMode == 1) {
-    display.setCursor(88, 54);
-    display.print(F(" FLASH "));
-    display.drawRect(90, 51, 38, 13, WHITE);
+    display.setCursor(90, 57);
+    display.print(F("FLASH!"));
+//    display.drawRect(90, 51, 38, 13, WHITE);
   }
 
 
+/*  LINE DIVISOR  /////// */
+   display.drawLine(86, 26, 86, 64, WHITE);
+
+   
+/* BATTERY PERCENTAGE /////// */
+    display.setCursor(104, 26);
+     if (perc > 4.2) {
+       display.drawBitmap(89, 26, battery_full, 16, 8, WHITE);
+        display.print(F("100"));
+    } else if (perc > 4.0) {
+       display.drawBitmap(89, 26, battery_threequarters, 16, 8, WHITE);
+        display.print(F("80"));
+    } else if (perc > 3.9) {
+       display.drawBitmap(89, 26, battery_half, 16, 8, WHITE);
+        display.print(F("60"));
+    } else if (perc > 3.7) {
+       display.drawBitmap(89, 26, battery_low, 16, 8, WHITE);
+        display.print(F("20"));
+    } else if (perc > 3.6) {
+       display.drawBitmap(89, 26, battery_empty, 16, 8, WHITE);
+        display.print(F("00"));
+    }
+       display.println(F("%"));
+
+       
 /* WHITE BALANCE DISPLAY (in Kelvin - TCS34725) /////// */
-   display.drawRect(90, 1, 38, 25, WHITE);
-   display.setCursor(98, 5);
+   display.drawRect(86, 1, 42, 23, WHITE);
+   display.setCursor(95, 4);
    display.print(F("TEMP"));
 
   if (rgb_sensor.ct > 9999) {
-    display.setCursor(101, 15);
+    display.setCursor(98, 14);
     display.print(rgb_sensor.ct / 1000.0, 0);
  } else {
-    display.setCursor(98, 15);
+    display.setCursor(95, 14);
     display.print(rgb_sensor.ct / 1000.0, 1);
  }  display.print(F("K"));
 
 
-/*  LINE DIVISOR  /////// */
-   display.drawLine(86, 2, 86, 63, WHITE);
-/*
-// LUX PRINT
-  display.setCursor(92, 1);
-  display.print(F("LUX"));
+
+/* LUX DISPLAY /////// */
+  display.setCursor(90, 37);
+//  display.print(F("LUX"));
   display.print(lux, 0);
-*/
+  display.print(F("Lx"));
 
 
 /* EV DISPLAY /////// */
-  display.setCursor(90, 29);
+  display.setCursor(90, 47);
   display.print(F("EV:"));
   if (lux > 0) {
     display.println(EV, 0);
