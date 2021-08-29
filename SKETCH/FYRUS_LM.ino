@@ -782,19 +782,19 @@ void refresh() {
 
 /* BATTERY PERCENTAGE /////// */
     display.setCursor(104, 39);
-     if (perc = 4.2) {
+     if (perc > 4.2) {
        display.drawBitmap(89, 39, battery_full, 16, 8, WHITE);
         display.print(F("100"));
-    } else if (perc = 4.0) {
+    } else if (perc > 4.0) {
        display.drawBitmap(89, 39, battery_threequarters, 16, 8, WHITE);
         display.print(F("80"));
-    } else if (perc = 3.9) {
+    } else if (perc > 3.9) {
        display.drawBitmap(89, 39, battery_half, 16, 8, WHITE);
         display.print(F("60"));
-    } else if (perc = 3.7) {
+    } else if (perc > 3.7) {
        display.drawBitmap(89, 39, battery_low, 16, 8, WHITE);
         display.print(F("20"));
-    } else {
+    } else if (perc > 3.6) {
        display.drawBitmap(89, 39, battery_empty, 16, 8, WHITE);
         display.print(F("00"));
     }
