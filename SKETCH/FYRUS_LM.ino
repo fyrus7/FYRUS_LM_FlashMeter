@@ -25,7 +25,7 @@
 //Adafruit_SSD1306 display(OLED_MOSI, OLED_CLK, OLED_DC, OLED_RESET, OLED_CS);
 
 /*///////////////////////////////////////////////////////////////*/
-/* 4 Pin Oled display
+/* 4 Pin Oled display (DEFAULT)
  *
  * VCC -> 3.3V
  * GND -> GND
