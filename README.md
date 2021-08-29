@@ -21,15 +21,15 @@ Incident Light Meter &amp; White Balance for Photography
 
 # What you need:
 
-1. Arduino Nano.
+1. Arduino Nano v3
 
-2. Oled Display 0.96" 128x64.
+2. 128x64 (0.96) Oled Display.
 - 4 pin or 7 pin (SPI) display both can use.
 - i have write both the code. You just need to choose which to use.
 - NOTE: 7 pin is faster but use more pin to soldered.
 
-3. BH1750FVI Light Sensor with Dome.
- - (minor change in code if you use BH1750 without dome)
+3. BH1750 / BH1750FVI Light Sensor.
+- (GY-30 & GY-302 are same, just different in their size)
 
 4. TCS34725 RGB Sensor.
 
