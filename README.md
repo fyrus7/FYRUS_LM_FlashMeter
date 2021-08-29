@@ -10,7 +10,8 @@ Incident Light Meter &amp; White Balance for Photography
 4. ND Filter Mode.
 5. Temperature Reading (White Balance).
 6. EV Reading.
-7. Battery Reading.
+7. Lux Reading.
+8. Battery Reading (appear after button is pressed to get reading)
 
 - Aperture: f/1.0 to f/22.0
 - Shutter: 1/10000 to 133 sec.
@@ -23,8 +24,9 @@ Incident Light Meter &amp; White Balance for Photography
 1. Arduino Nano.
 
 2. 0.96" Oled Display.
-- 7 pin or 4 pin both can use, i have write both the code. You just need to choose which to use.
-- 7 pin is faster but use more pin to soldered.
+- 7 pin or 4 pin both can use.
+- i have write both the code. You just need to choose which to use.
+- NOTE: 7 pin is faster but use more pin to soldered.
 
 3. BH1750FVI Light Sensor with Dome.
  - (minor change in code if you use BH1750 without dome)
@@ -37,6 +39,7 @@ Incident Light Meter &amp; White Balance for Photography
 
 7. (optional) Electronic enclosure case.
 
+-
 
 # to do :
 - (i failed this due to the lack of knowledge)
