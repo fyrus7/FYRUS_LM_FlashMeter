@@ -122,6 +122,7 @@ static const unsigned char PROGMEM battery_empty [] =
 
 
 float   lux;
+float   ct;
 boolean Overflow = 0;                   // Sensor got Saturated and Display "Overflow"
 float   ISOND;
 boolean ISOmode = 0;
