@@ -65,7 +65,9 @@ static const unsigned char PROGMEM battery_empty [] =
 #include <EEPROM.h>
 #include <avr/sleep.h>
 
-/*///////////////////////////////////////////////////////////////*/
+
+// REPLACE 1 //////////////////////////////
+
 /* 4 Pin Oled display
  *
  * VCC -> 3.3V
@@ -76,7 +78,8 @@ static const unsigned char PROGMEM battery_empty [] =
 #define OLED_RESET 4
 Adafruit_SSD1306 display(OLED_RESET);
 
-/*///////////////////////////////////////////////////////////////*/
+// END REPLACE 1 //////////////////////////
+
 
 BH1750 lightMeter;
 
@@ -194,8 +197,12 @@ void setup() {
   //lightMeter.begin(BH1750::ONE_TIME_LOW_RES_MODE); // for low resolution but 16ms light measurement time.
 
 
+// REPLACE 2 ////////////////////////////////
+
 /* 4 pin 0.96 Oled Display */
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C); 
+
+// END REPLACE 2 ////////////////////////////
 
   display.setTextColor(WHITE);
   display.clearDisplay();
