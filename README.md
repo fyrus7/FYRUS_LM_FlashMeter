@@ -24,8 +24,8 @@ Incident Light Meter &amp; White Balance for Photography
 
 2. 128x64 (0.96) Oled Display.
 - 4 pin or 7 pin (SPI) display both can use.
-- i have write both the code. You just need to choose which to use.
-- NOTE: 7 pin is faster but use more pin to soldered.
+- i have write the code for 7 pin. Just follow instructions in the note.
+
 
 3. BH1750 / BH1750FVI Light Sensor.
 - (GY-30 & GY-302 are same, just different in their size)
