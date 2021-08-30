@@ -1,0 +1,36 @@
+This code is to replace the Oled Display with a 7 Pin SPI display.
+
+HOW TO:
+1. Copy the "REPLACE 1" and "REPLACE 2".
+2. Delete code in REPLACE 1 and REPLACE 2.
+3. Paste these code to REPLACE 1 and REPLACE 2 in the sketch.
+
+
+
+// REPLACE 1 //////////////////////////////////////////////////////////////////
+
+/* 7 Pin Oled Display
+ *  
+ *  VCC -> 5V
+ *  GND -> GND
+ *  the rest of the pin connect as below
+*/
+#define OLED_CLK                8   // PIN D8
+#define OLED_MOSI               9   // PIN D9
+#define OLED_RESET              10  // PIN D10
+#define OLED_DC                 11  // PIN D11
+#define OLED_CS                 12  // PIN D12
+Adafruit_SSD1306 display(OLED_MOSI, OLED_CLK, OLED_DC, OLED_RESET, OLED_CS);
+
+// END REPLACE 1 //////////////////////////////////////////////////////////////
+
+
+AND THIS
+
+
+// REPLACE 2 /////////////////////////////////
+
+/* 7 pin Oled */
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3D);
+
+// END REPLACE 2 /////////////////////////////
