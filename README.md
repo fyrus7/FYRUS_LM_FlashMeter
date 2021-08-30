@@ -60,4 +60,4 @@ Incident Light Meter &amp; White Balance for Photography
 - 
 
 
-this Software is originally based from https://github.com/vpominchuk/lightmeter
+this Software is originally based from a fews project, combining into one with a fix and adjustment.
