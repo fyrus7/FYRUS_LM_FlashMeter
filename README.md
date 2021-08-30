@@ -10,8 +10,7 @@ Incident Light Meter &amp; White Balance for Photography
 4. ND Filter Mode.
 5. Temperature Reading (White Balance).
 6. EV Reading.
-7. Lux Reading.
-8. Battery Reading (appear after button is pressed to get reading)
+7. Battery Reading
 
 - Aperture: f/1.0 to f/22.0
 - Shutter: 1/10000 to 133 sec.
@@ -60,4 +59,4 @@ Incident Light Meter &amp; White Balance for Photography
 - 
 
 
-this Software is originally based from a fews project, combining into one with a fix and adjustment.
+this Software is originally based from a fews projects, combining into one with a fix and adjustment.
