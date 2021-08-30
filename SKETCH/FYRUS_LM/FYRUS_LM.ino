@@ -1,51 +1,3 @@
-#include <SPI.h>
-#include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h> /* define your oled size in the library */
-#include <BH1750.h>
-#include <Adafruit_TCS34725.h>
-#include <EEPROM.h>
-#include <avr/sleep.h>
-
-/*///////////////////////////////////////////////////////////////*/
-/* 4 Pin Oled display
- *
- * VCC -> 3.3V
- * GND -> GND
- * SDA -> pin A4
- * SCL -> pin A5
-*/
-#define OLED_RESET 4
-Adafruit_SSD1306 display(OLED_RESET);
-
-/*///////////////////////////////////////////////////////////////*/
-
-BH1750 lightMeter;
-
-#define DomeMultiplier          2.17      // Multiplier when using a white translucid Dome covering the sensor, EDIT THIS VALUE
-#define MeteringButtonPin       2         // Metering button pin
-#define PlusButtonPin           3         // Plus button pin
-#define MinusButtonPin          4         // Minus button pin
-#define ModeButtonPin           5         // Priority Mode button pin
-#define MenuButtonPin           6         // Menu button pin
-#define MeteringModeButtonPin   7         // Metering Mode (Ambient / Flash)
-
-#define MaxISOIndex             57
-#define MaxApertureIndex        27        // max 70 (default f1.0 ~ f22.0) editable
-#define MaxTimeIndex            80
-#define MaxNDIndex              8         // max 13 (default ND2 to ND256) editable
-#define MaxFlashMeteringTime    3000      // flash metering in milisecond (default 3 seconds)
-
-/* CONSTANT FOR WHITE BALANCE /////// */
-#define TCS34725_R_Coef         0.136
-#define TCS34725_G_Coef         1.000
-#define TCS34725_B_Coef         -0.444
-#define TCS34725_GA             1.0
-#define TCS34725_DF             310.0
-#define TCS34725_CT_Coef        3810.0
-#define TCS34725_CT_Offset      1391.0
-//#define C_const 129
-
 static const unsigned char PROGMEM FLM [] = {
 0x00, 0x00, 0x00, 0x07, 0xFF, 0xFF, 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0xFF, 0xFF,
 0xE0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0xFF, 0xFF, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -103,6 +55,54 @@ static const unsigned char PROGMEM battery_low [] =
 static const unsigned char PROGMEM battery_empty [] =
 { 0x7F, 0xE0, 0x40, 0x20, 0x40, 0x38, 0x40, 0x38, 0x40, 0x38, 0x40, 0x38, 0x40, 0x20, 0x7F, 0xE0 };
 
+
+#include <SPI.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h> /* define your oled size in the library */
+#include <BH1750.h>
+#include <Adafruit_TCS34725.h>
+#include <EEPROM.h>
+#include <avr/sleep.h>
+
+/*///////////////////////////////////////////////////////////////*/
+/* 4 Pin Oled display
+ *
+ * VCC -> 3.3V
+ * GND -> GND
+ * SDA -> pin A4
+ * SCL -> pin A5
+*/
+#define OLED_RESET 4
+Adafruit_SSD1306 display(OLED_RESET);
+
+/*///////////////////////////////////////////////////////////////*/
+
+BH1750 lightMeter;
+
+#define DomeMultiplier          2.17      // Multiplier when using a white translucid Dome covering the sensor, EDIT THIS VALUE
+#define MeteringButtonPin       2         // Metering button pin
+#define PlusButtonPin           3         // Plus button pin
+#define MinusButtonPin          4         // Minus button pin
+#define ModeButtonPin           5         // Priority Mode button pin
+#define MenuButtonPin           6         // Menu button pin
+#define MeteringModeButtonPin   7         // Metering Mode (Ambient / Flash)
+
+#define MaxISOIndex             57
+#define MaxApertureIndex        27        // max 70 (default f1.0 ~ f22.0) editable
+#define MaxTimeIndex            80
+#define MaxNDIndex              8         // max 13 (default ND2 to ND256) editable
+#define MaxFlashMeteringTime    3000      // flash metering in milisecond (default 3 seconds)
+
+/* CONSTANT FOR WHITE BALANCE /////// */
+#define TCS34725_R_Coef         0.136
+#define TCS34725_G_Coef         1.000
+#define TCS34725_B_Coef         -0.444
+#define TCS34725_GA             1.0
+#define TCS34725_DF             310.0
+#define TCS34725_CT_Coef        3810.0
+#define TCS34725_CT_Offset      1391.0
+//#define C_const 129
 
 float   lux;                            // Lux value from BH1750
 float   ct;                             // Color Temp value from TCS34725
@@ -209,15 +209,18 @@ void setup() {
   display.setTextSize(1);
   
   display.setTextColor(WHITE);
-  display.setCursor(30, 14); //(30 ,32);
-  display.println("LIGHT METER");
-  display.setCursor(22 ,32);
-  display.println("Ambient, Flash");
-  display.setCursor(14 ,42);
-  display.println("and White Balance");
+  display.setCursor(40, 8);
+  display.println("FYRUS LM");
+  display.setCursor(30, 25);
+  display.println("light meter");
+  display.setCursor(18 ,37);
+  display.println("for photography");
 
+  display.setCursor(24 ,57);
+  display.println("<<< READY >>>");
+  
   display.display();
-  display.clearDisplay();
+//  display.clearDisplay();
   delay(2000);
 
 /////// SPLASH END
@@ -250,7 +253,7 @@ void setup() {
 
   lux = getLux();            // get Lux reading from BH1750
   rgb_sensor.getColorTemp(); // get White Balance Value from TCS34725
-  refresh();
+//  refresh();
 }
 
 void loop() {
@@ -748,14 +751,14 @@ void refresh() {
     // Aperture mode
     display.setTextColor(WHITE);
     display.setCursor(36, 26);
-    display.print(F("APERTURE"));
+    display.print(F("Aperture"));
     display.drawLine(0, 26, 26, 26, WHITE);
     display.drawLine(26, 26, 32, 32, WHITE);
     
   } else if (modeIndex == 1) { 
     // Shutter mode
     display.setCursor(0, 26);
-    display.print(F("SHUTTER"));
+    display.print(F("Shutter"));
     display.drawLine(50, 32, 82, 32, WHITE);
     display.drawLine(44, 26, 50, 32, WHITE);
 
@@ -766,61 +769,60 @@ void refresh() {
   if (meteringMode == 0) {
 /* (F("AMBIENT")); */ 
   } else if (meteringMode == 1) {
-    display.setCursor(90, 57);
-    display.print(F("FLASH!"));
+    display.setCursor(96, 42);
+    display.print(F("FLASH"));
 //    display.drawRect(90, 51, 38, 13, WHITE);
   }
 
 
 /*  LINE DIVISOR  /////// */
-   display.drawLine(86, 26, 86, 64, WHITE);
+   display.drawLine(91, 28, 91, 52, WHITE);
 
    
 /* BATTERY PERCENTAGE /////// */
-    display.setCursor(104, 26);
+    display.setCursor(104, 57);
      if (perc > 4.2) {
-       display.drawBitmap(89, 26, battery_full, 16, 8, WHITE);
+       display.drawBitmap(89, 56, battery_full, 16, 8, WHITE);
         display.print(F("100"));
     } else if (perc > 4.0) {
-       display.drawBitmap(89, 26, battery_threequarters, 16, 8, WHITE);
+       display.drawBitmap(89, 56, battery_threequarters, 16, 8, WHITE);
         display.print(F("80"));
     } else if (perc > 3.9) {
-       display.drawBitmap(89, 26, battery_half, 16, 8, WHITE);
+       display.drawBitmap(89, 56, battery_half, 16, 8, WHITE);
         display.print(F("60"));
     } else if (perc > 3.7) {
-       display.drawBitmap(89, 26, battery_low, 16, 8, WHITE);
+       display.drawBitmap(89, 56, battery_low, 16, 8, WHITE);
         display.print(F("20"));
     } else if (perc > 3.6) {
-       display.drawBitmap(89, 26, battery_empty, 16, 8, WHITE);
+       display.drawBitmap(89, 56, battery_empty, 16, 8, WHITE);
         display.print(F("00"));
     }
        display.println(F("%"));
 
        
 /* WHITE BALANCE DISPLAY (in Kelvin - TCS34725) /////// */
-   display.drawRect(86, 1, 42, 23, WHITE);
-   display.setCursor(95, 4);
+   display.drawRect(91, 1, 37, 25, WHITE);
+   display.setCursor(98, 5);
    display.print(F("TEMP"));
 
   if (rgb_sensor.ct > 9999) {
-    display.setCursor(98, 14);
+    display.setCursor(101, 15);
     display.print(rgb_sensor.ct / 1000.0, 0);
  } else {
-    display.setCursor(95, 14);
+    display.setCursor(98, 15);
     display.print(rgb_sensor.ct / 1000.0, 1);
  }  display.print(F("K"));
 
 
 
-/* LUX DISPLAY /////// */
-  display.setCursor(90, 37);
-//  display.print(F("LUX"));
+/* LUX DISPLAY /////// 
+  display.setCursor(90, 27);
   display.print(lux, 0);
-  display.print(F("Lx"));
+  display.print(F("lx")); */
 
 
 /* EV DISPLAY /////// */
-  display.setCursor(90, 47);
+  display.setCursor(96, 30);
   display.print(F("EV:"));
   if (lux > 0) {
     display.println(EV, 0);
@@ -846,7 +848,7 @@ void refresh() {
 
 /* ND FILTER INDICATOR // ND FILTER PRINT (available only after turn ON) /////// */
   if (ndIndex > 0) {
-    display.setCursor(48, 57);
+    display.setCursor(50, 57);
     display.print(F("+ND"));
     display.print(pow(2, ndIndex), 0);
 /*    display.setCursor(104, 57);
