@@ -41,22 +41,19 @@ Incident Light Meter &amp; White Balance for Photography
 -
 
 # to do :
-- (i failed this due to the lack of knowledge)
-- if anyone got the idea please update the code
+i failed this due to the lack of knowledge, if anyone got the idea please update the code, very much appreciate.
 
-- one tactile & one rotary switch with push button.
+1. use One Tactile button & One EC11 Rotary switch with Push button.
+- tactile button = metering.
+- rotary switch = press once (aperture/shutter priority), press twice (ISO/ND mode), hold (flash on/off).
 
-1. Instead of 6 button, make...
-- ONE Tactile Button for Metering
-- ONE (EC11) Rotary Switch with Push Button
+OR,
 
-2. Rotary Switch to control...
-- plus.
-- minus.
-- single click to switch between aperture/shutter priority.
-- double click to enter ISO/ND setting.
-- long press to switch between Ambient/Flash mode.
-- 
+2. use 3 Tactile button (R, Bn1, Bn2)
+- R = metering.
+- Bn1 & Bn2 = aperture/shutter priority mode.
+- R & Bn1 = ISO/ND mode.
+- R & Bn2 = switching flash mode on/off.
 
 
 this Software is originally based from a fews projects, combining into one with a fix, optimizations and adjustment.
