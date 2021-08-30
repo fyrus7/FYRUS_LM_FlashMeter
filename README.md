@@ -59,4 +59,4 @@ Incident Light Meter &amp; White Balance for Photography
 - 
 
 
-this Software is originally based from a fews projects, combining into one with a fix and adjustment.
+this Software is originally based from a fews projects, combining into one with a fix, optimizations and adjustment.
