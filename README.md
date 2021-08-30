@@ -22,7 +22,7 @@ Incident Light Meter &amp; White Balance for Photography
 
 1. Arduino Nano v3
 
-2. 128x64 (0.96) Oled Display.
+2. SSD1306 Oled Display (0.96" / 128x64).
 - 4 pin or 7 pin (SPI) display both can use.
 - i have write the code for 7 pin. Just follow instructions in the note.
 
