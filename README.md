@@ -34,7 +34,7 @@ Incident Light Meter &amp; White Balance for Photography
 
 5. 6x Tactile Button.
 
-6. Lipo 1S 3.7v Battery.
+6. Lipo 1S 3.7v Battery (or 2x AA battery).
 
 7. (optional) Electronic enclosure case.
 
