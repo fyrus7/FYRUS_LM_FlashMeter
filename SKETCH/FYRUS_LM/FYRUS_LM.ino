@@ -40,19 +40,19 @@ static const unsigned char PROGMEM FLM [] = {
 0x20, 0xBB, 0x00, 0x00, 0x00, 0x30, 0x30, 0xB1, 0x98, 0x10, 0x20, 0x9B, 0x00, 0x00, 0x00, 0x30,
 0x30, 0x99, 0x9B, 0x30, 0x30, 0xDB, 0x00, 0x00, 0x00, 0x30, 0x30, 0x98, 0xF1, 0xE0, 0x3C, 0xD3 };
 
-static const unsigned char PROGMEM battery_full [] =
+static const unsigned char PROGMEM _full [] =
 { 0x7F, 0xE0, 0x40, 0x20, 0x5F, 0xB8, 0x5F, 0xB8, 0x5F, 0xB8, 0x5F, 0xB8, 0x40, 0x20, 0x7F, 0xE0 };
 
-static const unsigned char PROGMEM battery_threequarters [] =
+static const unsigned char PROGMEM _threequarters [] =
 { 0x7F, 0xE0, 0x40, 0x20, 0x5C, 0x38, 0x5E, 0x38, 0x5E, 0x38, 0x5F, 0x38, 0x40, 0x20, 0x7F, 0xE0 };
 
-static const unsigned char PROGMEM battery_half [] =
+static const unsigned char PROGMEM _half [] =
 { 0x7F, 0xE0, 0x40, 0x20, 0x58, 0x38, 0x58, 0x38, 0x5C, 0x38, 0x5C, 0x38, 0x40, 0x20, 0x7F, 0xE0 };
 
-static const unsigned char PROGMEM battery_low [] =
+static const unsigned char PROGMEM _low [] =
 { 0x7F, 0xE0, 0x40, 0x20, 0x50, 0x38, 0x50, 0x38, 0x50, 0x38, 0x50, 0x38, 0x40, 0x20, 0x7F, 0xE0 };
 
-static const unsigned char PROGMEM battery_empty [] =
+static const unsigned char PROGMEM _empty [] =
 { 0x7F, 0xE0, 0x40, 0x20, 0x40, 0x38, 0x40, 0x38, 0x40, 0x38, 0x40, 0x38, 0x40, 0x20, 0x7F, 0xE0 };
 
 
@@ -222,23 +222,23 @@ void setup() {
 
    display.setCursor(50, 40);
   if (battery.level() > 80 && battery.level() < 100) {
-    display.drawBitmap(44, 18, battery_full, 16, 8, WHITE);
+    display.drawBitmap(44, 18, _full, 16, 8, WHITE);
      display.println("NICE");
      
   } else if (battery.level() > 60 && battery.level() < 80) {
-    display.drawBitmap(44, 18, battery_threequarters, 16, 8, WHITE);
+    display.drawBitmap(44, 18, _threequarters, 16, 8, WHITE);
      display.println("GOOD");
 
   } else if (battery.level() > 40 && battery.level() < 60) {
-    display.drawBitmap(44, 18, battery_half, 16, 8, WHITE);
+    display.drawBitmap(44, 18, _half, 16, 8, WHITE);
      display.println("HALF");
 
   } else if (battery.level() > 20 && battery.level() < 40) {
-    display.drawBitmap(44, 18, battery_low, 16, 8, WHITE);
+    display.drawBitmap(44, 18, _low, 16, 8, WHITE);
      display.println("LOW");
 
   } else {
-       display.drawBitmap(44, 18, battery_empty, 16, 8, WHITE);
+       display.drawBitmap(44, 18, _empty, 16, 8, WHITE);
         display.setCursor(29, 40);
         display.println("Need Charge!");
   }
@@ -256,7 +256,6 @@ void setup() {
   display.println("<<< READY >>>");
   
   display.display();
-//  display.clearDisplay();
   delay(2000);
 
 /////// SPLASH END
@@ -289,7 +288,6 @@ void setup() {
 
   lux = getLux();                      // get Lux reading from BH1750
   rgb_sensor.getColorTemp();           // get White Balance Value from TCS34725
-//  refresh();
 }
 
 void loop() {
@@ -815,21 +813,20 @@ void refresh() {
 /* BATTERY PERCENTAGE /////// */
     
      if (battery.level() > 80 && battery.level() < 100) {
-       display.drawBitmap(89, 56, battery_full, 16, 8, WHITE);
+       display.drawBitmap(89, 56, _full, 16, 8, WHITE);
 
     } else if (battery.level() > 60 && battery.level() < 80) {
-       display.drawBitmap(89, 56, battery_threequarters, 16, 8, WHITE);
+       display.drawBitmap(89, 56, _threequarters, 16, 8, WHITE);
 
     } else if (battery.level() > 40 && battery.level() < 60) {
-       display.drawBitmap(89, 56, battery_half, 16, 8, WHITE);
+       display.drawBitmap(89, 56, _half, 16, 8, WHITE);
 
     } else if (battery.level() > 20 && battery.level() < 40) {
-       display.drawBitmap(89, 56, battery_low, 16, 8, WHITE);
+       display.drawBitmap(89, 56, _low, 16, 8, WHITE);
 
     } else {
-       display.drawBitmap(89, 56, battery_empty, 16, 8, WHITE);
+       display.drawBitmap(89, 56, _empty, 16, 8, WHITE);
     }
-//       display.println(F("%"));
 
        display.setCursor(104, 57);
        display.print(battery.level());
