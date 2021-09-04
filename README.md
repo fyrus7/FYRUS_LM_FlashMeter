@@ -29,7 +29,7 @@ Incident Light Meter &amp; White Balance for Photography
 6. Lipo 1S 3.7v Battery.
 7. (optional) 5V Step-Up Boost Converter (RECOMMENDED TO USE).
 
-* can use ordinary AA/AAA batteries, power below 3.7v will always show as full battery.
+* can use ordinary AA/AAA batteries, power below 3v will show empty battery. A small modification is needed.
 
 
 # Library needed
