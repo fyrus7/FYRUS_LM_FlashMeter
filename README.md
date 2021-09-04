@@ -1,4 +1,4 @@
-# FYRUS LM / Arduino Photography Light Meter
+# FYRUS LM
 Incident Light Meter &amp; White Balance for Photography
 
 
