@@ -206,8 +206,6 @@ void setup() {
   display.setTextColor(WHITE);
   display.clearDisplay();
 
-/////// SPLASH SCREEN
-
   display.drawBitmap(24, 0, FLM, 80, 64, 1);
   display.display();
   display.clearDisplay();
@@ -220,7 +218,7 @@ void setup() {
 
   display.drawLine(31, 12, 95, 12, WHITE);
 
-   display.setCursor(50, 40);
+    display.setCursor(50, 40);
   if (battery.level() > 80 && battery.level() < 100) {
     display.drawBitmap(44, 18, _full, 16, 8, WHITE);
      display.println("NICE");
@@ -258,7 +256,6 @@ void setup() {
   display.display();
   delay(2000);
 
-/////// SPLASH END
 
   // IF NO MEMORY WAS RECORDED BEFORE, START WITH THIS VALUES otherwise it will read "255"
   if (apertureIndex > MaxApertureIndex) {
