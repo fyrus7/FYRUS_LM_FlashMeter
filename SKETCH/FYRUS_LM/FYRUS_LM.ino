@@ -63,7 +63,7 @@ static const unsigned char PROGMEM battery_empty [] =
 #include <BH1750.h>
 #include <Adafruit_TCS34725.h>
 #include <EEPROM.h>
-#include <avr/sleep.h>
+#include <Battery.h>
 
 
 // REPLACE 1 //////////////////////////////
@@ -145,12 +145,10 @@ uint8_t modeIndex =         EEPROM.read(modeIndexAddr);
 uint8_t meteringMode =      EEPROM.read(meteringModeAddr);
 uint8_t ndIndex =           EEPROM.read(ndIndexAddr);
 
-int value = 0;              // Battery Metering
-float voltage;
-float perc;
+
+Battery battery(3000, 4200, A0);
 
 
-/* TCS34724 RGB SENSOR /////// */
 class ColorSensor {
   
     public:
@@ -196,7 +194,8 @@ void setup() {
   lightMeter.begin(BH1750::ONE_TIME_HIGH_RES_MODE_2);
   //lightMeter.begin(BH1750::ONE_TIME_LOW_RES_MODE); // for low resolution but 16ms light measurement time.
 
-
+  battery.begin(5000, 1.0);
+  
 // REPLACE 2 ////////////////////////////////
 
 /* 4 pin 0.96 Oled Display */
@@ -216,14 +215,44 @@ void setup() {
   display.setTextSize(1);
   
   display.setTextColor(WHITE);
-  display.setCursor(40, 8);
+  display.setCursor(40, 1);
   display.println("FYRUS LM");
-  display.setCursor(30, 25);
-  display.println("light meter");
-  display.setCursor(18 ,37);
-  display.println("for photography");
 
-  display.setCursor(24 ,57);
+  display.drawLine(31, 12, 95, 12, WHITE);
+
+   display.setCursor(50, 40);
+  if (battery.level() > 80 && battery.level() < 100) {
+    display.drawBitmap(44, 18, battery_full, 16, 8, WHITE);
+     display.println("NICE");
+     
+  } else if (battery.level() > 60 && battery.level() < 80) {
+    display.drawBitmap(44, 18, battery_threequarters, 16, 8, WHITE);
+     display.println("GOOD");
+
+  } else if (battery.level() > 40 && battery.level() < 60) {
+    display.drawBitmap(44, 18, battery_half, 16, 8, WHITE);
+     display.println("HALF");
+
+  } else if (battery.level() > 20 && battery.level() < 40) {
+    display.drawBitmap(44, 18, battery_low, 16, 8, WHITE);
+     display.println("LOW");
+
+  } else {
+       display.drawBitmap(44, 18, battery_empty, 16, 8, WHITE);
+        display.setCursor(29, 40);
+        display.println("Need Charge!");
+  }
+
+  display.setCursor(61, 18);
+  display.print(battery.level());
+  display.println(F("%"));
+
+  display.setCursor(45, 29);
+  display.print(battery.voltage());
+  display.print(F("mV"));
+       
+  display.drawLine(31, 51, 95, 51, WHITE);     
+  display.setCursor(25 ,57);
   display.println("<<< READY >>>");
   
   display.display();
@@ -258,16 +287,12 @@ void setup() {
     ndIndex = 0;
   }
 
-  lux = getLux();            // get Lux reading from BH1750
-  rgb_sensor.getColorTemp(); // get White Balance Value from TCS34725
+  lux = getLux();                      // get Lux reading from BH1750
+  rgb_sensor.getColorTemp();           // get White Balance Value from TCS34725
 //  refresh();
 }
 
 void loop() {
-  
-  value = analogRead(A0);
-  voltage = value * 5.0/1023;
-  perc = map(voltage, 3.6, 4.2, 0, 100);
   
   readButtons();
 
@@ -776,7 +801,8 @@ void refresh() {
   if (meteringMode == 0) {
 /* (F("AMBIENT")); */ 
   } else if (meteringMode == 1) {
-    display.setCursor(96, 42);
+/*    display.setCursor(96, 42); */
+    display.setCursor(96, 38);
     display.print(F("FLASH"));
 //    display.drawRect(90, 51, 38, 13, WHITE);
   }
@@ -787,24 +813,31 @@ void refresh() {
 
    
 /* BATTERY PERCENTAGE /////// */
-    display.setCursor(104, 57);
-     if (perc > 4.2) {
+    
+     if (battery.level() > 80 && battery.level() < 100) {
        display.drawBitmap(89, 56, battery_full, 16, 8, WHITE);
-        display.print(F("100"));
-    } else if (perc > 4.0) {
+
+    } else if (battery.level() > 60 && battery.level() < 80) {
        display.drawBitmap(89, 56, battery_threequarters, 16, 8, WHITE);
-        display.print(F("80"));
-    } else if (perc > 3.9) {
+
+    } else if (battery.level() > 40 && battery.level() < 60) {
        display.drawBitmap(89, 56, battery_half, 16, 8, WHITE);
-        display.print(F("60"));
-    } else if (perc > 3.7) {
+
+    } else if (battery.level() > 20 && battery.level() < 40) {
        display.drawBitmap(89, 56, battery_low, 16, 8, WHITE);
-        display.print(F("20"));
-    } else if (perc > 3.6) {
+
+    } else {
        display.drawBitmap(89, 56, battery_empty, 16, 8, WHITE);
-        display.print(F("00"));
     }
+//       display.println(F("%"));
+
+       display.setCursor(104, 57);
+       display.print(battery.level());
        display.println(F("%"));
+
+       display.setCursor(96, 47);
+       display.print(battery.voltage() / 1000.0, 1);
+       display.print(F("v"));
 
        
 /* WHITE BALANCE DISPLAY (in Kelvin - TCS34725) /////// */
@@ -829,7 +862,7 @@ void refresh() {
 
 
 /* EV DISPLAY /////// */
-  display.setCursor(96, 30);
+  display.setCursor(96, 29);
   display.print(F("EV:"));
   if (lux > 0) {
     display.println(EV, 0);
