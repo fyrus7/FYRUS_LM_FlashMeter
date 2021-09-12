@@ -34,11 +34,7 @@ Incident Light Meter &amp; White Balance for Photography
 
 # Library Needed :
 
-1. Adafruit SSD1306 Library
-2. Adafruit GFX Library
-3. BH1750 Library
-4. Adafruit TCS34725 Library
-5. BatterySense Library
+All library are included in Library folder.
 
 
 # Revision :
