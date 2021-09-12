@@ -57,6 +57,9 @@ Incident Light Meter &amp; White Balance for Photography
 - Priority Switch : hold Metering + Plus button.
 - Flash Mode : hold Metering + Minus button.
 
+3. Version 3 = WIP
+
+
 # ATTENTION!
 The Software will store last value metered. Therefor, the second time you press metering button, it actually show the last value stored. Meter twice to get a new value.
 
