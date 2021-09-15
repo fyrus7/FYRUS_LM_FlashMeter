@@ -7,11 +7,10 @@ Incident Light Meter &amp; White Balance for Photography
 1. Aperture Priority.
 2. Shutter Priority.
 3. Flash Mode.
-4. ND Filter Mode (v1 only).
-5. Temperature (White Balance) Reading.
-6. EV Reading.
-7. Battery Reading.
-8. Battery Voltage Reading.
+4. Temperature (White Balance) Reading.
+5. EV Reading.
+6. Battery Reading.
+7. Battery Voltage Reading.
 
 - Aperture: f/1.0 to f/22.
 - Shutter: 1/10000 to 133 sec.
@@ -25,7 +24,7 @@ Incident Light Meter &amp; White Balance for Photography
 2. SSD1306 Oled Display (0.96" / 128x64).
 3. BH1750 / BH1750FVI Light Sensor.
 4. TCS34725 RGB Sensor.
-5. 6pcs Tactile Button (3pcs for v2).
+5. 3pcs Tactile Button.
 6. Lipo 1S 3.7v Battery.
 7. (optional) 5V Step-Up Boost Converter (recommended to use for a better battery reading).
 
@@ -37,23 +36,13 @@ Incident Light Meter &amp; White Balance for Photography
 All library are included in Library folder.
 
 
-# Revision :
+# Button Usage :
 
-1. Version 1 = 6 button operation
-- Metering
-- Plus
-- Minus
-- Priority Switch
-- Menu
-- Flash Mode
-
-2. Version 2 = 3 button operation
+3 button operation
 - (Metering / Plus / Minus)
 - ISO set : hold Plus + Minus button.
 - Priority Switch : hold Metering + Plus button.
 - Flash Mode : hold Metering + Minus button.
-
-3. Version 3 = WIP
 
 
 # ATTENTION!
