@@ -1,15 +1,15 @@
 # FYRUS LM
-Incident Light Meter, Flash Meter & White Balance for Photography
+Incident Flash Meter, Light Meter & White Balance for Photography
 
 - Current version : 2.1
 - Date : 18 / 09 / 2021
 
 
-# Highlite :
+# Functions :
 
-1. Aperture Priority.
-2. Shutter Priority.
-3. Flash Mode.
+1. Flash Metering.
+2. Aperture Priority.
+3. Shutter Priority.
 4. Temperature (White Balance) Reading.
 5. EV Reading.
 6. Battery Reading.
