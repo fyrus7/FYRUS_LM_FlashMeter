@@ -31,13 +31,13 @@ Incident Light Meter, Flash Meter & White Balance for Photography
 6. Lipo 3.7v Battery.
 7. 5V Step-Up Boost Converter (optional for better performance).
 
-* can use ordinary AA/AAA batteries, but power below 3v will show empty battery. A small modification is needed.
+* if ordinary AA/AAA batteries is use, power below 3v will show empty battery. A small modification to the code is needed.
 
 
 # Library Needed :
 
-All library are included in Library folder.
-
+- All library are included in Library folder.
+- Please install all the library needed to your IDE.
 
 # Button Usage :
 
