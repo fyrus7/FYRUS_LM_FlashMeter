@@ -153,7 +153,6 @@ float   lux;                              // Lux value from BH1750
 float   ct;                               // Color Temp value from TCS34725
 boolean Overflow = 0;                     // Sensor got Saturated and Display "Overflow"
 float   ISOND;
-boolean ISOmode = 0;
 boolean Screen = false;
 boolean ISOset = false;
 
