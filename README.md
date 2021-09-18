@@ -1,5 +1,8 @@
 # FYRUS LM
-Incident Light Meter &amp; White Balance for Photography
+Incident Light Meter, Flash Meter & White Balance for Photography
+
+- Current version : 2.1
+- Date : 18 / 09 / 2021
 
 
 # Highlite :
@@ -48,6 +51,6 @@ All library are included in Library folder.
 # ATTENTION!
 The Software will store last value metered. Therefor, the second time you press metering button, it actually show the last value stored. Meter twice to get a new value.
 
-# disclaimer
+#
 
-the Software is originally based from a fews old projects i found, combining into one with an upgrading, fixing, optimized and adjustments.
+- the Software is based from various online project, combining into one with major fixing & optimizations.
