@@ -49,8 +49,5 @@ Incident Flash Meter, Light Meter & White Balance for Photography
 
 
 # ATTENTION!
-The Software will store last value metered. Therefor, the second time you press metering button, it actually show the last value stored. Meter twice to get a new value.
+The Software will store last value metered to EEPROM. Therefor, the second time you press metering button, it actually show the last value stored before. Meter twice to get a precise new value.
 
-#
-
-- the Software is based from various online project, combining into one with major fixing & optimizations.
