@@ -8,7 +8,7 @@
  
  /* /////// DISPLAY /////// */
 
-  uint8_t linePos[] = {17, 37};
+
   display.clearDisplay();
   display.setTextColor(WHITE);
 
