@@ -177,14 +177,11 @@ void showISOset() {
   ISOset = true;
   Screen = false;
 
-// ISO SETUP MENU
+// ISO SETUP
   display.clearDisplay();
   display.setTextSize(2);
-  display.setCursor(47, 1);
-  display.println(F("ISO"));
-  display.setTextSize(1);
-  display.setCursor(44, 18);
-  display.println(F("SETTING"));
+  display.setCursor(10, 5);
+  display.println(F("ISO SPEED"));
   display.setTextSize(3);
 
   long iso = getISOByIndex(ISOIndex);
