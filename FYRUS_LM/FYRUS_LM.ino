@@ -153,7 +153,7 @@ float   lux;                              // Lux value from BH1750
 float   ct;                               // Color Temp value from TCS34725
 boolean Overflow = 0;                     // Sensor got Saturated and Display "Overflow"
 float   ISOND;
-boolean Screen = false;
+boolean Main   = false;
 boolean ISOset = false;
 
 
@@ -661,7 +661,7 @@ float fixAperture(float a) {
 // Calculate new exposure value and display it.
 void refresh() {
   ISOset = false;
-  Screen = true;
+  Main   = true;
 
   float EV = lux2ev(lux);
   float T = getTimeByIndex(T_expIndex);
@@ -891,7 +891,7 @@ if (modeIndex == 1) {
 
 void ISOSpeed() {
   ISOset = true;
-  Screen = false;
+  Main   = false;
 
 // ISO SPEED SET
   display.setTextSize(1);
@@ -921,7 +921,7 @@ void ISOSpeed() {
 
   void menu() {
   if (!Bn1 && !Bn2) {
-    if (Screen) {
+    if (Main) {
       ISOSpeed();
     } else {
       refresh();
@@ -952,7 +952,7 @@ void ISOSpeed() {
 
 
 // Switch between Ambient light and Flash light metering
-  if (Screen && !R && !Bn2) {
+  if (Main && !R && !Bn2) {
     if (meteringMode == 0) {
       meteringMode = 1;
       
@@ -975,7 +975,7 @@ delay(500);
 
 // switching between Aperture priority and Shutter Speed priority.
   if (!R && !Bn1) {
-    if (Screen) {
+    if (Main) {
       modeIndex++;
 
 display.clearDisplay();
@@ -991,7 +991,7 @@ delay(100);
     delay(200);
   }
   
-  if (Screen && (!Bn1 || !Bn2)) {
+  if (Main && (!Bn1 || !Bn2)) {
     if (modeIndex == 0) {
       // Aperture priority mode
       if (!Bn1) {
