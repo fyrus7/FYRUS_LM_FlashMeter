@@ -896,12 +896,12 @@ void ISOSpeed() {
 // ISO SPEED SET
   display.setTextSize(1);
   display.setTextColor(WHITE, BLACK);
-  display.setCursor(0, 57);
-  display.println(F("SET:    "));
+  display.setCursor(0, 56);
+  display.println(F("SET>    "));
   
   long iso = getISOByIndex(ISOIndex);
 
-  display.setCursor(24, 57);
+  display.setCursor(24, 56);
   if (iso > 999999) {
     display.print(iso / 1000000.0, 2);
     display.print(F("M"));
