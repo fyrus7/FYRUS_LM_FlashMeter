@@ -1,7 +1,7 @@
 /* ---------------------------------------------------------- *
  *  
  * Fyrus LM v2.1
- * Photography Light Meter & White Balance.
+ * Photography Flash & Light Meter with White Balance.
  * 
  * 3 Button Operation:
  * > button 1 = Metering
