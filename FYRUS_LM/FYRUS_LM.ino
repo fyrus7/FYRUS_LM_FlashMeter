@@ -830,7 +830,7 @@ if (modeIndex == 1) {
 
 
 // WHITE BALANCE METERING
-   display.drawRect(90, 1, 38, 34, WHITE);;
+   display.drawRect(90, 1, 38, 34, WHITE);
    display.setCursor(98, 8);
    display.print(F("TEMP"));
 
