@@ -1,8 +1,8 @@
 # FYRUS LM
 Incident Flash Meter, Light Meter & White Balance for Photography
 
-- Current version : 2.1
-- Date : 18 / 09 / 2021
+- Current version : 2.2
+- Date : 21 / 09 / 2021
 
 
 # Functions :
