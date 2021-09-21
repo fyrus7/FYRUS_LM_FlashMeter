@@ -1,6 +1,6 @@
 /* ---------------------------------------------------------- *
  *  
- * Fyrus LM v2.1
+ * Fyrus LM v2.2
  * Photography Flash & Light Meter with White Balance.
  * 
  * 3 Button Operation:
@@ -897,24 +897,20 @@ void ISOSpeed() {
   display.setTextSize(1);
   display.setTextColor(WHITE, BLACK);
   display.setCursor(0, 56);
-  display.println(F("SET>    "));
+  display.println(F("SET>          "));
   
   long iso = getISOByIndex(ISOIndex);
 
-  display.setCursor(24, 56);
   if (iso > 999999) {
-    display.print(iso / 1000000.0, 2);
-    display.print(F("M"));
-  } else if (iso > 9999) {
-    display.print(iso / 1000.0, 0);
-    display.print(F("K"));
+    display.setCursor(26, 56);
   } else {
-    display.print(iso);
+    display.setCursor(26, 56);
   }
+    display.print(iso);
 
-  display.display();
-  delay(200);
-}
+    display.display();
+   delay(200);
+  }
 
 
 /* /////// FUNCTION /////// */
