@@ -1,6 +1,6 @@
 /* ---------------------------------------------------------- *
  *  
- * Fyrus LM v2.2
+ * Fyrus LM v2.3
  * Photography Flash & Light Meter with White Balance.
  * 
  * 3 Button Operation:
@@ -226,7 +226,7 @@ void setup() {
   pinMode(Bn2p, INPUT_PULLUP);
   pinMode(Rp, INPUT_PULLUP);
 
-  battery.begin(5000, 1.0);
+  battery.begin(5000, 1.0, &sigmoidal);
 
   Wire.begin();
   lightMeter.begin(BH1750::ONE_TIME_HIGH_RES_MODE_2);
