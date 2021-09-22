@@ -1,8 +1,8 @@
 # FYRUS LM
 Incident Flash Meter, Light Meter & White Balance for Photography
 
-- Current version : 2.2
-- Date : 21 / 09 / 2021
+- Current version : 2.3
+- Date : 23 / 09 / 2021
 
 
 # Functions :
@@ -46,6 +46,8 @@ Incident Flash Meter, Light Meter & White Balance for Photography
 - ISO set : hold Plus + Minus button.
 - Priority Switch : hold Metering + Plus button.
 - Flash Mode : hold Metering + Minus button.
+
+- p/s: i have try with encoder (with push button) but it just slow the operation LoL. Therefor i kept it for 3 button operation.
 
 
 # ATTENTION!
