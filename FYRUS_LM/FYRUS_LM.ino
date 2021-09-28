@@ -159,9 +159,9 @@ boolean ISOset = false;
 
 // INDEX FOR EEPROM MEMORY RECORDING
 #define MaxISOIndex             57
-#define MaxApertureIndex        27        // max 70 (default f1.0 ~ f22) editable.
+#define MaxApertureIndex        27
 #define MaxTimeIndex            80
-#define MaxFlashMeteringTime    3000      // flash metering in millisecond (default 3 seconds)
+#define MaxFlashMeteringTime    3000
 
 #define ISOIndexAddr            1
 #define apertureIndexAddr       2
