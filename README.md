@@ -12,12 +12,11 @@ Incident Flash Meter, Light Meter & White Balance for Photography
 3. Shutter Priority.
 4. Temperature (White Balance) Reading.
 5. EV Reading.
-6. Battery Reading.
-7. Battery Volt and % Reading.
+6. Battery Volt & Percentage.
 
-- Aperture: f/1.0 to f/22.
-- Shutter: 1/10000 to 133 sec.
-- ISO: 8 - 4 000 000.
+- Aperture : f/1.0 to f/22.
+- Shutter : 1/10000 to 50sec.
+- ISO : 8 - 4 000 000.
 
 
 
@@ -32,22 +31,23 @@ Incident Flash Meter, Light Meter & White Balance for Photography
 7. 5V Step-Up Boost Converter (optional for better performance).
 
 * if ordinary AA/AAA batteries is use, power below 3v will show empty battery. A small modification to the code is needed.
-
+I
+* Board voltage is based on 5v, your board voltage maybe less than that. Change the value based on your board output (use multimeter) for better accuracy.
 
 # Library Needed :
 
 - All library are included in Library folder.
 - Please install all the library needed to your IDE.
 
-# Button Usage :
+# Button Operation :
 
-3 button operation
-- (Metering / Plus / Minus)
-- ISO set : hold Plus + Minus button.
-- Priority Switch : hold Metering + Plus button.
-- Flash Mode : hold Metering + Minus button.
+- 3 button for Metering | Plus | Minus
+-
+- ISO setup : hold Plus + Minus button.
+- Priority Mode : hold Metering + Plus button.
+- Flash On/Off : hold Metering + Minus button.
 
-- p/s: i have try with encoder (with push button) but it just slow the operation LoL. Therefor i kept it for 3 button operation.
+
 
 
 # ATTENTION!
