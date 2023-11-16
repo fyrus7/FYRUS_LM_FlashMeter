@@ -113,18 +113,14 @@ static const unsigned char PROGMEM _rect [] = {
 0xE1, };
 
 
-#include <SPI.h>
 #include <Wire.h>
-#include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <BH1750.h>
-#include <Adafruit_TCS34725.h>
 #include <EEPROM.h>
 #include <Battery.h>
 
 // DISPLAY
-#define OLED_RESET 4
-Adafruit_SSD1306 display(OLED_RESET);
+Adafruit_SSD1306 display(128, 64, &Wire, -1);
 
 BH1750 lightMeter;
 
@@ -132,17 +128,6 @@ BH1750 lightMeter;
 uint8_t Rp   = 2;                         // Metering button pin
 uint8_t Bn1p = 3;                         // + increment button pin
 uint8_t Bn2p = 4;                         // - increment button pin
-
-
-// CONSTANTS & CALIBRATION
-#define DomeMultiplier          2.17      // define 1.0 without white translucide Dome on the sensor.
-#define TCS34725_R_Coef         0.136
-#define TCS34725_G_Coef         1.000
-#define TCS34725_B_Coef         -0.444
-#define TCS34725_GA             1.0
-#define TCS34725_DF             310.0
-#define TCS34725_CT_Coef        3810.0
-#define TCS34725_CT_Offset      1391.0
 
 
 // FLOAT & BOOLEAN
@@ -187,37 +172,6 @@ uint8_t meteringMode =      EEPROM.read(meteringModeAddr);
 
 // Battery Meter : MinVoltage / MaxVoltage / BattPin       
 Battery battery(3000, 4000, A0);
-
-
-// TCS 34725
-class ColorSensor {
-  
-    public:
-  
-    void getColorTemp();
-    uint16_t r, g, b, c, ir;
-    uint16_t ct, lux, r_comp, g_comp, b_comp;
-    float cpl;
-} rgb_sensor;
-
-void ColorSensor::getColorTemp() {
-
-    Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_101MS, TCS34725_GAIN_1X);
-  
-    tcs.getRawData(&r, &g, &b, &c);
-    //lux = tcs.calculateLux(r, g, b);
-    // DN40 calculations
-    ir = (r + g + b > c) ? (r + g + b - c) / 2 : 0;
-    r_comp = r - ir;
-    g_comp = g - ir;
-    b_comp = b - ir;
-    //c_comp = c - ir;
-  
-    cpl = (700) / (TCS34725_GA * TCS34725_DF);
-    lux = (TCS34725_R_Coef * float(r_comp) + TCS34725_G_Coef * float(g_comp) + TCS34725_B_Coef * float(b_comp)) / cpl;
-    ct = TCS34725_CT_Coef * float(b_comp) / float(r_comp) + TCS34725_CT_Offset;
-    //ct = ct*DomeSum;
-}
 
 
 void setup() {  
@@ -316,7 +270,6 @@ void loop() {
       lightMeter.configure(BH1750::ONE_TIME_HIGH_RES_MODE_2);
 
       lux = getLux();
-      rgb_sensor.getColorTemp();
 
       if (Overflow == 1) {
         delay(10);
@@ -349,7 +302,6 @@ display.display();
         }
 
         currentLux = getLux();
-        rgb_sensor.getColorTemp();
         delay(16);
         
         if (currentLux > lux) {
@@ -824,23 +776,6 @@ if (modeIndex == 1) {
     display.setTextColor(BLACK);
     display.print(F("FLASH"));
   }
-
-
-   display.setTextColor(WHITE);
-
-
-// WHITE BALANCE METERING
-   display.drawRect(90, 1, 38, 34, WHITE);
-   display.setCursor(98, 8);
-   display.print(F("TEMP"));
-
-  if (rgb_sensor.ct > 9999) {
-    display.setCursor(101, 20);
-    display.print(rgb_sensor.ct / 1000.0, 0);
- } else {
-    display.setCursor(98, 20);
-    display.print(rgb_sensor.ct / 1000.0, 1);
- }  display.print(F("K"));
 
    
 // BATTERY PERCENTAGE
