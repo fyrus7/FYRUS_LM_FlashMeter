@@ -113,7 +113,6 @@ static const unsigned char PROGMEM _rect [] = {
 0xE1, };
 
 
-#include <Wire.h>
 #include <Adafruit_SSD1306.h>
 #include <BH1750.h>
 #include <EEPROM.h>
@@ -123,20 +122,19 @@ static const unsigned char PROGMEM _rect [] = {
 Adafruit_SSD1306 display(128, 64, &Wire, -1);
 
 BH1750 lightMeter;
+#define DomeMultiplier        2.17      // Multiplier when using a white translucid Dome covering the lightmeter
 
 // BUTTONS
-uint8_t Rp   = 2;                         // Metering button pin
-uint8_t Bn1p = 3;                         // + increment button pin
-uint8_t Bn2p = 4;                         // - increment button pin
+uint8_t Rp   = 2;                       // Metering button pin
+uint8_t Bn1p = 3;                       // + increment button pin
+uint8_t Bn2p = 4;                       // - increment button pin
 
 
-// FLOAT & BOOLEAN
-boolean Bn1;                              // + increment button state
-boolean Bn2;                              // - increment button state
-boolean R;                                // Metering button state
-float   lux;                              // Lux value from BH1750
-float   ct;                               // Color Temp value from TCS34725
-boolean Overflow = 0;                     // Sensor got Saturated and Display "Overflow"
+boolean Bn1;
+boolean Bn2;
+boolean R;
+float   lux;
+boolean Overflow = 0;
 float   ISOND;
 boolean Main   = false;
 boolean ISOset = false;
@@ -178,7 +176,7 @@ void setup() {
  
   pinMode(Bn1p, INPUT_PULLUP);
   pinMode(Bn2p, INPUT_PULLUP);
-  pinMode(Rp, INPUT_PULLUP);
+  pinMode(Rp,   INPUT_PULLUP);
 
   battery.begin(5000, 1.0, &sigmoidal);
 
@@ -189,7 +187,6 @@ void setup() {
 
   // DISPLAY STARTS
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C); 
-
   display.clearDisplay();
   
   display.drawBitmap(24, 0, FLM, 80, 64, 1);
@@ -247,8 +244,7 @@ void setup() {
     meteringMode = 0;
   }
 
-  lux = getLux();                      // get Lux reading from BH1750
-  rgb_sensor.getColorTemp();           // get White Balance Value from TCS34725
+  lux = getLux();
 }
 
 
@@ -680,7 +676,6 @@ void refresh() {
   display.clearDisplay();
   display.setTextColor(WHITE);
 
-
 // Shutter priority mode
 if (modeIndex == 1) {
 
@@ -762,10 +757,8 @@ if (modeIndex == 1) {
 }
 
 
-/* DEFINE SAME TEXT SIZE & COLOR BELOW THIS RANGE  */
   display.setTextColor(WHITE);
   display.setTextSize(1);
-
 
 // METERING MODE (AMBIENT/FLASH)
   if (meteringMode == 0) {
